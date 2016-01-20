@@ -206,9 +206,11 @@ function create_config( )
   config = {
     enabled_plugins = {
       "echo",
-      "btc",
+      "Robot",
       "get",
       "google",
+      "chat",
+      "welcome",
       "gps",
       "help",
       "id",
@@ -219,8 +221,6 @@ function create_config( )
       "plugins",
       "set",
       "stats",
-      "time",
-      "weather",
       "spammer" },
     sudo_users = {62834077},
     disabled_channels = {}
