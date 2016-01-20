@@ -1,3 +1,4 @@
+
 local function get_variables_hash(msg)
   if msg.to.type == 'chat' then
     return 'chat:'..msg.to.id..':variables'
