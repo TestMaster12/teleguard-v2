@@ -164,20 +164,26 @@ end
 return {
   description = "Plugin to manage other plugins. Enable, disable or reload.", 
   usage = {
-    "!plugins: list all plugins.", 
-    "!plugins enable [plugin]: enable plugin.",
-    "!plugins disable [plugin]: disable plugin.",
-    "!plugins disable [plugin] chat: disable plugin only this chat.",
-    "!plugins reload: reloads all plugins." },
+      moderator = {
+          "/plugins - (name) gp : disable item in group",
+          "/plugins + (name) gp : enable item in group",
+          },
+      sudo = {
+          "/plugins : plugins list",
+          "/plugins + (name) : enable bot item",
+          "/plugins - (name) : disable bot item",
+          "/plugins @ : reloads plugins" },
+          },
   patterns = {
-    "^!plugins$",
-    "^!plugins? (enable) ([%w_%.%-]+)$",
-    "^!plugins? (disable) ([%w_%.%-]+)$",
-    "^!plugins? (enable) ([%w_%.%-]+) (chat)",
-    "^!plugins? (disable) ([%w_%.%-]+) (chat)",
-    "^!plugins? (reload)$" },
+    "^[!/]plugins$",
+    "^[!/]plugins? (+) ([%w_%.%-]+)$",
+    "^[!/]plugins? (-) ([%w_%.%-]+)$",
+    "^[!/]plugins? (+) ([%w_%.%-]+) (gp)",
+    "^[!/]plugins? (-) ([%w_%.%-]+) (gp)",
+    "^[!/]plugins? (@)$" },
   run = run,
-  privileged = true
+  moderated = true, -- set to moderator mode
+  --privileged = true
 }
 
 end
