@@ -1,12 +1,11 @@
+
 package.path = package.path .. ';.luarocks/share/lua/5.2/?.lua'
   ..';.luarocks/share/lua/5.2/?/init.lua'
 package.cpath = package.cpath .. ';.luarocks/lib/lua/5.2/?.so'
 
 require("./bot/utils")
 
-local f = assert(io.popen('/usr/bin/git describe --tags', 'r'))
-VERSION = assert(f:read('*a'))
-f:close()
+VERSION = '0.14.6'
 
 -- This function is called when tg receive a msg
 function on_msg_receive (msg)
@@ -133,9 +132,13 @@ local function is_plugin_disabled_on_chat(plugin_name, receiver)
     -- Checks if plugin is disabled on this chat
     for disabled_plugin,disabled in pairs(disabled_chats[receiver]) do
       if disabled_plugin == plugin_name and disabled then
-        local warning = 'Plugin '..disabled_plugin..' is disabled on this chat'
-        print(warning)
-        send_msg(receiver, warning, ok_cb, false)
+        if plugins[disabled_plugin].hidden then
+            print('Plugin '..disabled_plugin..' is disabled on this chat')
+        else
+            local warning = 'Plugin '..disabled_plugin..' is disabled on this chat'
+            print(warning)
+            send_msg(receiver, warning, ok_cb, false)
+        end
         return true
       end
     end
@@ -221,9 +224,10 @@ function create_config( )
       "plugins",
       "set",
       "stats",
-      "spammer" },
+      "spammer"},
     sudo_users = {62834077},
-    disabled_channels = {}
+    disabled_channels = {},
+    moderation = {data = 'data/moderation.json'}
   }
   serialize_to_file(config, './data/config.lua')
   print ('saved config into ./data/config.lua')
@@ -264,6 +268,30 @@ function load_plugins()
     end
 
   end
+end
+
+-- custom add
+function load_data(filename)
+
+	local f = io.open(filename)
+	if not f then
+		return {}
+	end
+	local s = f:read('*all')
+	f:close()
+	local data = JSON.decode(s)
+
+	return data
+
+end
+
+function save_data(filename, data)
+
+	local s = JSON.encode(data)
+	local f = io.open(filename, 'w')
+	f:write(s)
+	f:close()
+
 end
 
 -- Call and postpone execution for cron plugins
