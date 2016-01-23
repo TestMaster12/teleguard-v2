@@ -34,7 +34,6 @@ return {
   },
   run = run
 }
---Made By @ImanDaneshi
-    --https://github.com/ThisIsArman
-    --Telegram.me/ThisIsArman
---edit by amir :/
+--Made By @hacker44
+    --Telegram.me/hacker44
+--edit by hacker44:/
