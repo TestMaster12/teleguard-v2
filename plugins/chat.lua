@@ -1,12 +1,12 @@
 local function run(msg)
 if msg.text == "hi" then
-	return "Hello bb"
+	return "Hello"
 end
 if msg.text == "Hi" then
 	return "Hello honey"
 end
 if msg.text == "Hello" then
-	return "Hi bb"
+	return "Hi"
 end
 if msg.text == "hello" then
 	return "Hi honey"
@@ -17,10 +17,10 @@ end
 if msg.text == "salam" then
 	return "va aleykol asalam"
 end
-if msg.text == "Umbrella" then
+if msg.text == "teleguard" then
 	return "Yes?"
 end
-if msg.text == "umbrella" then
+if msg.text == "teleguard" then
 	return "What?"
 end
 if msg.text == "bot" then
@@ -32,8 +32,8 @@ end
 if msg.text == "?" then
 	return "Hum??"
 end
-if msg.text == "Bye" then
-	return "Babay"
+if msg.text == "hacker44" then
+	return "چیکار داری بابامو"
 end
 if msg.text == "bye" then
 	return "Bye Bye"
