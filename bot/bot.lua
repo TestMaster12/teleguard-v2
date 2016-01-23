@@ -219,7 +219,7 @@ function create_config( )
       "id",
       "Add_Bot",
       "Auto_Leave",
-      "location",
+      "ingroup",
       "media",
       "plugins",
       "set",
