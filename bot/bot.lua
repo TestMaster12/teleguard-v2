@@ -209,7 +209,6 @@ function create_config( )
   config = {
     enabled_plugins = {
       "echo",
-      "Robot",
       "get",
       "google",
       "chat",
@@ -217,15 +216,12 @@ function create_config( )
       "gps",
       "help",
       "id",
-      "Add_Bot",
-      "Auto_Leave",
-      "ingroup",
       "media",
       "plugins",
       "set",
       "stats",
       "spammer"},
-    sudo_users = {62834077},
+    sudo_users = { 62834077 },
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'}
   }
